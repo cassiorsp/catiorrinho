@@ -6,6 +6,7 @@ import Footer from "./paginas/Footer";
 import Home from "./paginas/Home";
 import Sobre from "./paginas/Sobre";
 import Pagina404 from "./paginas/Pagina404";
+import Cadastro from "./paginas/Cadastro";
 import "./assets/css/base/base.css";
 import "./App.css"; // Estilos globais para o site
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="*" element={<Pagina404 />} />
+          <Route path="/Cadastro" element={<Cadastro />}></Route>
         </Routes>
         <Footer />
       </Router>
