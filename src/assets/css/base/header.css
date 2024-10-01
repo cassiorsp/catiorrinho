@@ -150,3 +150,8 @@
         padding: 1rem 1.5rem;
     }
 }
+
+.flex--centro {
+    display: flex;
+    flex-direction: column;
+}

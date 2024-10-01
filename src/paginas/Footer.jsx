@@ -4,7 +4,7 @@ import React from "react";
 // Componente Footer para o rodapé
 function Footer() {
   return (
-    <footer>
+    <footer className="w-full h-auto mt-2 lex flex-col justify-center fixed items-center bottom-0 ">
       <div>
         <p>Contato: contato@receitasdeliciosas.com</p>
       </div>

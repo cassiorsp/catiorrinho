@@ -11,31 +11,31 @@ const Cabecalho = () => {
         <span className="menu-hamburguinho__icone"></span>
       </div>
       <div className="cabecalho-container">
-        <a href="/" className="flex--centro">
+        <Link href="/" className="flex--centro">
           <img
             className="cabecalho__logo"
             src={imagem}
             alt="Logo Catiorrinho"
           />
           <h1 className="cabecalho__titulo">PetShop</h1>
-        </a>
+        </Link>
       </div>
       <nav className="menu-cabecalho">
         <ul className="menu-itens">
           <li>
-            <a href="#" className="menu-item menu-item-entrar">
+            <Link to="/Cadastro" className="menu-item menu-item-entrar">
               Entrar
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="menu-item">
+            <Link to="*" className="menu-item">
               Produtos
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/" className="menu-item">
-              Blog
-            </a>
+            <Link to="/" className="menu-item">
+              Teste
+            </Link>
           </li>
           <li>
             <Link to="/sobre" className="menu-item">
