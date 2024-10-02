@@ -6,7 +6,8 @@ import Footer from "./paginas/Footer";
 import Home from "./paginas/Home";
 import Sobre from "./paginas/Sobre";
 import Pagina404 from "./paginas/Pagina404";
-import CadastroUsuario from './paginas/CadastroUsuario';
+import CadastroBootstrap from './paginas/CadastroBootstrap';
+import CadastroTailwind from './paginas/CadastroTailwind';
 import "./assets/css/base/base.css";
 import "./App.css";
 
@@ -27,7 +28,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="*" element={<Pagina404 />} />
-          <Route path="/cadastro" element={<CadastroUsuario />} />
+          <Route path="/cadastroBootstrap" element={<CadastroBootstrap />} />
+          <Route path="/cadastroTailwind" element={<CadastroTailwind />} />
         </Routes>
         <Footer />
       </Router>

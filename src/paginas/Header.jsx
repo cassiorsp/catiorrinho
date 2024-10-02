@@ -28,8 +28,13 @@ const Cabecalho = () => {
             </a>
           </li>
           <li>
-            <Link to="/Cadastro" className="menu-item">
-              Cadastrar
+            <Link to="/cadastroBootstrap" className="menu-item">
+              Cadastrar <br /> Bootstrap
+            </Link>
+          </li>
+          <li>
+            <Link to="/cadastroTailwind" className="menu-item">
+              Cadastrar <br /> Tailwind
             </Link>
           </li>
           <li>

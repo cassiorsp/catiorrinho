@@ -3,7 +3,7 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const CadastroUsuario = () => {
+const CadastroBootstrap = () => {
   return (
     <main>
       <div className="container">
@@ -59,7 +59,7 @@ const CadastroUsuario = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit" className="mb-1">
-              Enviar
+              Cadastrar
             </Button>
           </Form>
         </article>
@@ -68,4 +68,4 @@ const CadastroUsuario = () => {
   );
 };
 
-export default CadastroUsuario;
+export default CadastroBootstrap;
