@@ -28,6 +28,11 @@ const Cabecalho = () => {
             </a>
           </li>
           <li>
+            <Link to="/Cadastro" className="menu-item">
+              Cadastrar
+            </Link>
+          </li>
+          <li>
             <a href="#" className="menu-item">
               Produtos
             </a>
