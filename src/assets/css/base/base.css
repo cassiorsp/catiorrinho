@@ -19,6 +19,7 @@ body{
 
 .flex--centro {
     align-items: center;
+    display: flex;
     justify-content: center;
 }
 
@@ -29,6 +30,7 @@ body{
 .titulo-pagina {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-family: var(--fonte-familia-titulo-pagina);
     font-size: var(--fonte-tamanho-titulo-pagina);
     background-color: var(--cor-contraste-claro);
@@ -37,7 +39,17 @@ body{
     height: 4.75rem;
     margin-top: 1.25rem;
     margin-bottom: 2rem;
-    padding-left: 2rem;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--fonte-familia-titulo-pagina);
+    font-size: var(--fonte-tamanho-titulo-pagina);
+    background-color: var(--cor-contraste-claro);
+    height: 4.75rem;
+    margin-bottom: 1rem;
 }
 
 @media(min-width: 800px) {

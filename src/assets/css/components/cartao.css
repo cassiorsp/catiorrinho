@@ -11,7 +11,7 @@
 
 .cartao__titulo {
     font-size: var(--fonte-tamanho-cartao-titulo);
-    margin-bottom: 1rem;
+    margin-bottom: 1rem;    
 }
 
 .cartao__texto {

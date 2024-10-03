@@ -11,7 +11,7 @@ const Cabecalho = () => {
         <span className="menu-hamburguinho__icone"></span>
       </div>
       <div className="cabecalho-container">
-        <a href="/" className="flex--centro">
+        <a href="/" className="flex--centro flex--coluna">
           <img
             className="cabecalho__logo"
             src={imagem}
@@ -23,18 +23,8 @@ const Cabecalho = () => {
       <nav className="menu-cabecalho">
         <ul className="menu-itens">
           <li>
-            <a href="#" className="menu-item menu-item-entrar">
+          <Link to="/login" className="menu-item">
               Entrar
-            </a>
-          </li>
-          <li>
-            <Link to="/cadastroBootstrap" className="menu-item">
-              Cadastrar <br /> Bootstrap
-            </Link>
-          </li>
-          <li>
-            <Link to="/cadastroTailwind" className="menu-item">
-              Cadastrar <br /> Tailwind
             </Link>
           </li>
           <li>

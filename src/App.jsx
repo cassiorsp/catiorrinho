@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./paginas/Header";
 import Footer from "./paginas/Footer";
 import Home from "./paginas/Home";
+import Login from "./paginas/Login";
 import Sobre from "./paginas/Sobre";
 import Pagina404 from "./paginas/Pagina404";
 import CadastroBootstrap from './paginas/CadastroBootstrap';
@@ -26,6 +27,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="*" element={<Pagina404 />} />
           <Route path="/cadastroBootstrap" element={<CadastroBootstrap />} />
