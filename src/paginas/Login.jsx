@@ -11,16 +11,15 @@ const Login = () => {
         <div className="container">
           <h2 className="titulo-pagina">Área do Usuário</h2>
         </div>
-        <article className="cartao d-flex">
+        <article className="cartao d-flex justify-content-center">
           <section>
             <div className="container-fluid h-custom">
               <div className="row d-flex justify-content-center align-items-center">
-                <div className="col-md-5">
+                <div className="col-md-5 d-flex justify-content-center">
                   <img
                     src={LoginIMG}
-                    className="img-fluid"
-                    alt="Sample"
-                    style={{ width: "100%", height: "auto" }}
+                    className="login-img"
+                    alt="Imagem Border Collie"                    
                   />
                 </div>
 

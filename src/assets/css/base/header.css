@@ -81,6 +81,8 @@
 }
 
 .menu-item {
+    font-size: 1.2rem;
+    font-weight: bold;
     display: block;
     padding-top: 1.5rem;
     padding-left: 1rem;
