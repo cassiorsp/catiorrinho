@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import InputMask from "react-input-mask";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const CadastroBootstrap = () => {
@@ -23,6 +24,45 @@ const CadastroBootstrap = () => {
   const [errors, setErrors] = useState({}); // Estado para armazenar campos com erro
   const [successMessage, setSuccessMessage] = useState("");
 
+  // Função para buscar o endereço pelo CEP usando a API ViaCEP
+  const fetchAddressByCep = async (cep) => {
+    try {
+      const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+      if (response.data.erro) {
+        throw new Error(
+          "Não foi possível buscar o endereço. Verifique o CEP digitado."
+        );
+      }
+      const { logradouro, bairro, localidade, uf } = response.data;
+      setFormData((prevData) => ({
+        ...prevData,
+        cidade: localidade,
+        uf: uf,
+        rua: logradouro,
+        bairro: bairro,
+      }));
+    } catch (error) {
+      setErrorMessages((prevErrors) => [
+        ...prevErrors,
+        error.message ||
+          "Não foi possível buscar o endereço. Verifique o CEP digitado.",
+      ]);
+      limparCamposCEP();
+    }
+  };
+
+  // Função para limpar os campos de endereço relacionados ao CEP
+  const limparCamposCEP = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      rua: "",
+      bairro: "",
+      cidade: "",
+      uf: "",
+    }));
+  };
+
+  // Função para lidar com a mudança nos campos do formulário
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -35,6 +75,20 @@ const CadastroBootstrap = () => {
       ...prevErrors,
       [name]: false,
     }));
+
+    // Busca o endereço automaticamente somente quando o CEP tiver 8 caracteres
+    if (name === "cep") {
+      const formattedValue = value.replace(/[-_]/g, "");
+
+      // Verifica se o valor formatado tem 8 caracteres (sem hífen e sem underline) e não está vazio
+      if (formattedValue.length === 8) {
+        fetchAddressByCep(formattedValue);
+        setErrorMessages([]); // Limpa as mensagens de erro
+      } else if (formattedValue.length === 0) {
+        // Limpa os campos ao apagar todos o CEP
+        limparCamposCEP();
+      }
+    }
   };
 
   const validateForm = () => {
@@ -46,6 +100,16 @@ const CadastroBootstrap = () => {
     if (!cepRegex.test(formData.cep)) {
       validationErrors.push("Insira um CEP válido.");
       errors.cep = true; // Marca o campo como erro
+    } else {
+      // Verifica se os campos da resposta do ViaCEP foram preenchidos
+      const { cidade, rua, bairro, uf } = formData;
+
+      if (!cidade || !rua || !bairro || !uf) {
+        validationErrors.push(
+          "Os dados do endereço não foram preenchidos corretamente. Verifique o CEP e tente novamente."
+        );
+        errors.cep = true; // Marca o campo como erro
+      }
     }
 
     // Validação da data de nascimento
@@ -71,9 +135,11 @@ const CadastroBootstrap = () => {
 
     // Validação da senha
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-    if (!passwordRegex.test(formData.senha1)) {
+    const senhaErro = !passwordRegex.test(formData.senha1);
+
+    if (senhaErro) {
       validationErrors.push(
-        "A senha deve ter pelo menos 8 Caracteres, 1 Letra Maiúscula, 1 Número e 1 Símbolo"
+        "A senha deve ter pelo menos 8 caracteres, 1 letra maiúscula, 1 número e 1 símbolo."
       );
       errors.senha1 = true; // Marca o campo como erro
       errors.senha2 = true; // Marca o campo de confirmação de senha como erro
@@ -96,17 +162,26 @@ const CadastroBootstrap = () => {
 
     const validationErrors = validateForm();
 
-    if (validationErrors.length > 0) {
+    if (Object.keys(validationErrors).length > 0) {
       setErrorMessages(validationErrors);
       return;
     } else {
-      setErrorMessages([]); // Limpa erros se não houver
+      setErrorMessages({}); // Limpa erros se não houver
       setSuccessMessage("");
     }
 
-    //  Envio do formulário
+    // Envio do formulário
     console.log("Dados enviados:", formData);
-    setSuccessMessage("Cadastro realizado com sucesso!");
+    setSuccessMessage([
+      "Cadastro realizado com sucesso!",
+      <br key="lineBreak" />,
+      "Você será redirecionado para a página de login"
+    ]);
+
+    // Redirecionamento para a página de login
+    setTimeout(() => {      
+      window.location.href = "/login";
+    }, 5000);
     handleReset();
   };
 
@@ -145,7 +220,7 @@ const CadastroBootstrap = () => {
                   <Form.Label>Nome Completo</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Digite seu nome completo"
+                    placeholder="Digite seu Nome Completo"
                     name="nome"
                     value={formData.nome}
                     onChange={handleChange}
@@ -281,7 +356,7 @@ const CadastroBootstrap = () => {
                   <Form.Label>Complemento</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder=""
+                    placeholder="Digite o Complemento (Opcional)"
                     name="complemento"
                     value={formData.complemento}
                     onChange={handleChange}
