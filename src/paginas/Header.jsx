@@ -28,9 +28,9 @@ const Cabecalho = () => {
             </Link>
           </li>
           <li>
-            <a href="#" className="menu-item">
+          <Link to="/produtos" className="menu-item">
               Produtos
-            </a>
+            </Link>
           </li>
           <li>
             <a href="/" className="menu-item">

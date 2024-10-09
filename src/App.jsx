@@ -5,6 +5,7 @@ import Header from "./paginas/Header";
 import Footer from "./paginas/Footer";
 import Home from "./paginas/Home";
 import Login from "./paginas/Login";
+import Produtos from "./paginas/Produtos";
 import Sobre from "./paginas/Sobre";
 import Pagina404 from "./paginas/Pagina404";
 import CadastroBootstrap from './paginas/CadastroBootstrap';
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/produtos" element={<Produtos />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="*" element={<Pagina404 />} />
           <Route path="/cadastroBootstrap" element={<CadastroBootstrap />} />
